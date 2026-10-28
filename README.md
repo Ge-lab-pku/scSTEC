@@ -186,7 +186,7 @@ Rscript calc_cpg_density.R --fasta <genome.fa> [options]
 **Parameters:**
 | <div style="width: 180px;">Parameter&emsp;&emsp;&emsp;&emsp;</div>  | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `--fasta` | string | *Required* | Path to the input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
+| `--fasta` | string | *Required* | The input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
 | `--output` | string | `hg38_100k_CpG.txt` | Output CpG density file |
 | `--resolution` | integer | `500000` | The resolution of CpG density |
 | `--species` | string | `human` | Species: `'human'` or `'mouse'`. |
@@ -208,8 +208,8 @@ python3 filter_bad_bins.py \
 **Parameters:**
 | <div style="width: 120px;">Parameter&emsp;&emsp;&emsp;</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `--chrom_sizes` | string | *Required* | Path to chromosome sizes file (two-column tab-delimited: chrom and length, e.g. `hg38.chrom.sizes`). |
-| `--sample_list` | string | *Required* | Path to the list containing sample IDs (one cell ID per line, matching Hi-C files `<cell_id>.hic`). |
+| `--chrom_sizes` | string | *Required* | The chromosome sizes file (two-column tab-delimited: chrom and length, e.g. `hg38.chrom.sizes`). |
+| `--sample_list` | string | *Required* | The sample list file (one cell per line, matching Hi-C files `<cell_id>.hic` or `<cell_id>.pairs`). |
 | `--hic_dir` | string | *Required* | Directory containing single-cell contact maps in `.hic` format. |
 | `--resolution` | integer | `500000` | Genomic bin resolution in base pairs (bp). |
 | `--min_reads` | integer | `10` | Minimum total read count across all cells; bins with fewer reads are filtered out. |
@@ -243,14 +243,14 @@ python3 scstec_main.py \
 | `--resolution` | integer | `500000` | Genomic bin resolution in base pairs (bp). |
 | `--num_chroms` | integer | `22` | Number of chromosomes to annotate (there are `22` autosomes for human and `19` autosomes for mouse). |
 | `--n_jobs` | integer | `0` | Number of parallel worker CPU processes (`0` uses all available cores minus 1). |
-| `--filter_out_bin_ratio` | integer | `20` | Quality filtering threshold (%): maximum allowed percentage of zero-representation loci before cell exclusion. |
-| `--ab_thre` | integer | `30` | Percentile threshold for defining top CpG-dense (A) and CpG-poor (B) anchor bins. |
-| `--out_dir` | string | `scstec_results` | Output directory where `.npy` prediction and confidence arrays will be stored. |
-| `--hic_format` | string | `pairs` | The input data format, either `hic` or `pairs`, other format not supported yet. |
+| `--filter_out_bin_ratio` | integer | `20` | Quality control of cells (%): cells with fewer percentage of zero-representation loci are filtered during annotation. |
+| `--ab_thre` | integer | `30` | Threshold to define high-CpG (A) and low-CpG (B) bins (%). |
+| `--out_dir` | string | `scstec_results` | Output directory. |
+| `--hic_format` | string | `pairs` | The input data format, either `hic` (for `.hic` files) or `pairs` (for `.pairs` files), other format not supported yet. |
 ---
 
 ### (Optional) `extract_pairs_contacts.py`
-Processes raw single-cell `.pairs` or `.pairs.gz` files from a sample list to generate chromosome-wise sparse contact matrices at a specified resolution.
+Processes raw single-cell `.pairs` or `.pairs.gz` files from a sample list to generate chromosome-wise contact files at a specified resolution.
 
 **Usage:**
 ```bash
@@ -264,12 +264,12 @@ python3 extract_pairs_contacts.py \
 **Parameters:**
 | <div style="width: 120px;">Parameter&emsp;&emsp;&emsp;</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `--chrom_sizes` | string | *Required* | Path to chromosome sizes file (e.g. `mm10.chrom.sizes` or `hg38.chrom.sizes`). |
-| `--sample_list` | string | *Required* | Path to sample list text file (one cell ID per line, matching `<cell_id>.pairs.gz` or `<cell_id>.pairs`). |
-| `--pairs_dir` | string | *Required* | Directory containing single-cell `.pairs` / `.pairs.gz` contact files. |
+| `--chrom_sizes` | string | *Required* | The chromosome sizes file (e.g. `mm10.chrom.sizes` or `hg38.chrom.sizes`). |
+| `--sample_list` | string | *Required* | The sample list file (one cell per line, matching `<cell_id>.pairs.gz` or `<cell_id>.pairs`). |
+| `--pairs_dir` | string | *Required* | Directory containing single-cell `.pairs` / `.pairs.gz` files. |
 | `--resolution` | integer | `500000` | Genomic bin resolution in base pairs (bp). |
-| `--num_chroms` | integer | `19` | Number of autosomes (`19` for mouse, `22` for human). |
-| `--out_dir` | string | `./processed_pairs` | Output directory for saving per-chromosome contact text files (`<cell_id>_chr<chrom>_<res>k.txt`). |
+| `--num_chroms` | integer | `19` | Number of chromosomes to annotate (there are `22` autosomes for human and `19` autosomes for mouse). |
+| `--out_dir` | string | `./processed_pairs` | Output directory for saving per-chromosome contact files (`<cell_id>_chr<chrom>_<res>k.txt`). |
 
 ---
 
