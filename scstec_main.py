@@ -74,12 +74,12 @@ def compute_locus_representation(hic_path, hic_format, sample_name, num_chroms, 
     """
     if hic_format == 'hic':
         if not os.path.exists(hic_path):
-            return None, None
+            return None, None, None, None
         try:
             hic = hicstraw.HiCFile(hic_path)
         except Exception as e:
             logging.warning(f"Failed to open .hic file for sample {sample_name} ({hic_path}): {e}")
-            return None, None
+            return None, None, None, None
     elif hic_format == 'pairs':
         Data_tot = []
         for ii in range(1,num_chroms+1):
@@ -93,7 +93,7 @@ def compute_locus_representation(hic_path, hic_format, sample_name, num_chroms, 
             Data_tot.append(Mat)
     else:
         logging.info(f"Unsupported input data format...")
-        return None, None
+        return None, None, None, None
 
     datamat_1_list = []
     datamat_2_list = []

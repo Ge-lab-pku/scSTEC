@@ -94,11 +94,11 @@ For human (here the input is in `.hic` format)
 python3 filter_bad_bins.py \
   --chrom_sizes ./reference/hg38.chrom.sizes \
   --sample_list ./data/human/sample_list.txt \
-  --hic_dir ./data \
+  --hic_dir ./data/human \
   --resolution 500000 \
   --min_reads 10 \
   --num_chroms 22 \
-  --output ./data/bad_bins_blacklist_500k.txt
+  --output ./data/human/bad_bins_blacklist_500k.txt \
   --hic_format hic
 ```
 For mouse (here the input is in `.pairs` format, need to run `extract_pairs_contacts.py` first)
@@ -110,7 +110,7 @@ python3 filter_bad_bins.py \
   --resolution 500000 \
   --min_reads 10  \
   --num_chroms 19 \
-  --output ./data/mouse/bad_bins_blacklist_500k.txt
+  --output ./data/mouse/bad_bins_blacklist_500k.txt \
   --hic_format pairs
 ```
 ---
@@ -121,7 +121,7 @@ Annotate chromatin subcompartments for all single cells:
 For human (here the input is in `.hic` format)
 ```bash
 python3 scstec_main.py \
-  --sample_list ./data/sample_list.txt \
+  --sample_list ./data/human/sample_list.txt \
   --hic_dir ./data/ \
   --cpg_file ./reference/hg38_500k_CpG.txt \
   --blacklist_file ./data/bad_bins_blacklist_500k.txt \
@@ -129,7 +129,7 @@ python3 scstec_main.py \
   --resolution 500000 \
   --num_chroms 22 \
   --n_jobs 10 \
-  --out_dir ./scstec_results/human
+  --out_dir ./scstec_results/human \
   --hic_format hic
 ```
 For mouse (here the input is in `.pairs` format)
@@ -143,7 +143,7 @@ python3 scstec_main.py   \
   --resolution 500000   \
   --num_chroms 19   \
   --n_jobs 10   \
-  --out_dir ./scstec_results/mouse
+  --out_dir ./scstec_results/mouse \
   --hic_format pairs
 ```
 ---
