@@ -116,8 +116,8 @@ python3 filter_bad_bins.py \
 ```
 ---
 
-### Step 3: Run scSTEC Subcompartment Annotation
-Annotate chromatin subcompartments ($A1, A2, B1, B2, B3$) for all single cells using chromosome-wise consensus:
+### Step 3: Subcompartment Annotation
+Annotate chromatin subcompartments for all single cells:
 
 For human (here the input is in `.hic` format)
 ```bash
