@@ -9,11 +9,10 @@
 <p align="center">
 <img src="Workflow.jpg" alt="Alt text" width="400" />
 </p>
-This is the code for "scSTEC: Annotating Chromatin Subcompartments from Individual Single-Cell Hi-C Data via Direct Two-Dimensional Embedding and Chromosome-wise Consensus". scSTEC (<b>s</b>ingle-<b>c</b>ell <b>S</b>ubcompartment
-annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</b>onsensus)
-Single-cell Hi-C (scHi-C) technologies enable the exploration of three-dimensional (3D) genome architecture at single-cell resolution. However, annotating chromatin subcompartments (A1, A2, B1, B2, B3) from highly sparse single-cell contact matrices remains a significant computational challenge. Existing bulk Hi-C methods rely on inter-chromosomal contact matrices that are unavailable for single cells, while existing state-of-the-art computational frameworks (e.g., scGHOST) employ deep neural network imputation, multi-step upstream pipelines, and cross-cell information sharing to address this task. However, these strategies risk attenuating cellular heterogeneity, compromising algorithmic interpretability, and demanding heavy computational resources. 
+Single-cell Hi-C (scHi-C) technologies enable the exploration of three-dimensional (3D) genome architecture at single-cell resolution. However, annotating chromatin <b>subcompartments</b> (A1, A2, B1, B2, B3) from highly sparse scHi-C matrices remains a significant computational challenge. Existing bulk Hi-C methods rely on inter-chromosomal contact matrices that are unavailable for single cells, while existing state-of-the-art computational frameworks (e.g., scGHOST) employ deep neural network imputation, multi-step upstream pipelines, and cross-cell information sharing to address this task. These strategies risk attenuating cellular heterogeneity, compromising algorithmic interpretability, and demanding heavy computational resources. 
 
-**scSTEC** is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual single-cell Hi-C / Micro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
+&emsp;<b>scSTEC</b>(<b>s</b>ingle-<b>c</b>ell <b>S</b>ubcompartment
+annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</b>onsensus) is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual single-cell Hi-C / Micro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
 
 ### Key Innovations of scSTEC:
 1. **2D Genomic Representation**: For each genomic locus, scSTEC quantifies its interactions with top CpG-dense (A) and CpG-poor (B) genomic neighbors ($a_i, b_i$).
