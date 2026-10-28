@@ -185,7 +185,7 @@ Rscript calc_cpg_density.R --fasta <genome.fa> [options]
 ```
 
 **Parameters:**
-| <div style="width: 150px;">Parameter</div>  | Type | Default | Description |
+| <div style="width: 180px;">Parameter</div>  | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--fasta` | string | *Required* | Path to the input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
 | `--output` | string | `hg38_100k_CpG.txt` | Output text file path for the calculated CpG density table. |
