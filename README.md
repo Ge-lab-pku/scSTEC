@@ -9,6 +9,9 @@
 <p align="center">
 <img src="Workflow.jpg" alt="Alt text" width="400" />
 </p>
+This is the code for "scSTEC: Annotating Chromatin Subcompartments from Individual Single-Cell Hi-C Data via Direct Two-Dimensional Embedding and Chromosome-wise Consensus". scSTEC (**S**ingle-cell Subcompartment
+Annotation via Two-dimensional Embedding and Chromosomewise
+Consensus)
 Single-cell Hi-C (scHi-C) technologies enable the exploration of three-dimensional (3D) genome architecture at single-cell resolution. However, annotating chromatin subcompartments (A1, A2, B1, B2, B3) from highly sparse single-cell contact matrices remains a significant computational challenge. Existing bulk Hi-C methods rely on inter-chromosomal contact matrices that are unavailable for single cells, while existing state-of-the-art computational frameworks (e.g., scGHOST) employ deep neural network imputation, multi-step upstream pipelines, and cross-cell information sharing to address this task. However, these strategies risk attenuating cellular heterogeneity, compromising algorithmic interpretability, and demanding heavy computational resources. 
 
 **scSTEC** is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual single-cell Hi-C / Micro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
