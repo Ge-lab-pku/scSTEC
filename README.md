@@ -15,7 +15,7 @@ Single-cell Hi-C (scHi-C) technologies enable the exploration of three-dimension
 annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</b>onsensus) is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual scHi-C / scMicro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
 
 ### Key Innovations of scSTEC:
-1. **2D Genomic Representation**: For each genomic locus, scSTEC quantifies its interactions with top CpG-dense (A) and CpG-poor (B) genomic neighbors ($a_i, b_i$).
+1. **2D Genomic Representation**: For each genomic locus, scSTEC quantifies its interactions with high-CpG (A) and low-CpG (B) genomic regions ($a_i, b_i$).
 2. **Eigenvector-Guided 2D Embedding**: Leverages rank-2 properties of estimated inter-chromosomal matrices in scGHOST to do clustering in 2D space.
 3. **Chromosome-Wise Consensus**: Votes on subcompartment classifications across all reference chromosomes ($N_c - 1$ classifiers), providing robust subcompartment annotations ($A1, A2, B1, B2, B3$) alongside uncertainty quantifications.
 
