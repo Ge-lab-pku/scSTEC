@@ -12,7 +12,7 @@
 Single-cell Hi-C (scHi-C) technologies enable the exploration of three-dimensional (3D) genome architecture at single-cell resolution. However, annotating chromatin <b>subcompartments</b> (A1, A2, B1, B2, B3) from highly sparse scHi-C matrices remains a significant computational challenge. Existing bulk Hi-C methods rely on inter-chromosomal contact matrices that are unavailable for single cells, while existing state-of-the-art computational frameworks (e.g., scGHOST) employ deep neural network imputation, multi-step upstream pipelines, and cross-cell information sharing to address this task. These strategies risk attenuating cellular heterogeneity, compromising algorithmic interpretability, and demanding heavy computational resources. 
 
 &emsp;<b>scSTEC</b>(<b>s</b>ingle-<b>c</b>ell <b>S</b>ubcompartment
-annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</b>onsensus) is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual single-cell Hi-C / Micro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
+annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</b>onsensus) is an efficient, interpretable computational framework for annotating chromatin subcompartments directly from individual scHi-C / scMicro-C matrices without requiring matrix imputation or inter-chromosomal contacts.
 
 ### Key Innovations of scSTEC:
 1. **2D Genomic Representation**: For each genomic locus, scSTEC quantifies its interactions with top CpG-dense (A) and CpG-poor (B) genomic neighbors ($a_i, b_i$).
@@ -27,12 +27,13 @@ annotation via <b>T</b>wo-dimensional <b>E</b>mbedding and chromosomewise <b>C</
 scSTEC/
 ├── README.md                 # Main documentation and tutorial guide
 ├── requirements.txt          # Python package dependencies
-├── calc_cpg_density.R        # Step 1: Genome-wide sliding window CpG density calculator
-├── filter_bad_bins.py        # Step 2: Low-coverage bin identification across single cells
-├── scstec_main.py            # Step 3: Core 2D embedding & consensus subcompartment annotator
-├── extract_pairs_contacts.py # Optional: Processing the pairs.gz file, extracting pairs for each chromosome
-├── data/                     # Placeholder directory for sample lists and cell matrix maps
-└── reference/                # Placeholder directory for chromosome sizes and genome references
+├── calc_cpg_density.R        # Step 1: Compute genome-wide CpG density
+├── filter_bad_bins.py        # Step 2: Filter out low-coverage bins
+├── scstec_main.py            # Step 3: Main function, 2D embedding & subcompartment annotation
+├── extract_pairs_contacts.py # Optional: Process the input pairs.gz file, extract pairs for each chromosome
+├── data/                     # Directory for all input files
+├── reference/                # Directory for reference files
+└── scstec_results/           # Directory for output files
 ```
 
 ---
@@ -44,6 +45,8 @@ scSTEC/
 * **R**: `>= 4.0`
 
 ### 1. Python Environment Setup
+The main pipeline is implemented in Python.
+
 Create a conda environment and install the required dependencies:
 ```bash
 conda create -n scstec python=3.9 -y
@@ -54,6 +57,8 @@ pip install -r requirements.txt
 ```
 
 ### 2. R Environment Dependencies
+R is only used to compute genome-wide CpG density across a range of resolutions.
+
 Install required Bioconductor packages for R:
 ```R
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -69,7 +74,7 @@ BiocManager::install(c("Biostrings", "GenomicRanges"))
 The scSTEC workflow consists of three standardized steps:
 
 ### Step 1: Calculate Genome CpG Density
-Generate genome-wide sliding-window CpG densities from a reference FASTA file (e.g., `hg38.fa` or `mm10.fa`):
+Generate genome-wide CpG densities from a reference FASTA file (e.g., `hg38.fa` or `mm10.fa`):
 
 ```bash
 Rscript calc_cpg_density.R \
@@ -82,8 +87,9 @@ Rscript calc_cpg_density.R \
 
 ---
 
-### Step 2: Identify Low-Coverage Bad Bins
-Identify genomic bins with insufficient cumulative read counts across single cells:
+### Step 2: Filter Out Low-Coverage Bad Bins
+Identify genomic bins with insufficient total read counts across single cells:
+
 For human (here the input is in `.hic` format)
 ```bash
 python3 filter_bad_bins.py \
