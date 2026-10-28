@@ -209,12 +209,12 @@ python3 filter_bad_bins.py \
 | <div style="width: 120px;">Parameter&emsp;&emsp;&emsp;</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--chrom_sizes` | string | *Required* | Path to chromosome sizes file (two-column tab-delimited: chrom and length, e.g. `hg38.chrom.sizes`). |
-| `--sample_list` | string | *Required* | Path to text file containing sample IDs (one cell ID per line, matching `<cell_id>.hic`). |
+| `--sample_list` | string | *Required* | Path to the list containing sample IDs (one cell ID per line, matching Hi-C files `<cell_id>.hic`). |
 | `--hic_dir` | string | *Required* | Directory containing single-cell contact maps in `.hic` format. |
 | `--resolution` | integer | `500000` | Genomic bin resolution in base pairs (bp). |
-| `--min_reads` | integer | `10` | Minimum cumulative read count threshold across all cells; bins with fewer reads are blacklisted. |
+| `--min_reads` | integer | `10` | Minimum total read count across all cells; bins with fewer reads are filtered out. |
 | `--num_chroms` | integer | `22` | Number of autosomes to evaluate (`22` for human, `19` for mouse). |
-| `--output` | string | `bad_bins_blacklist_500k.txt` | Output path for the low-coverage bad bins blacklist text file. |
+| `--output` | string | `bad_bins_blacklist_500k.txt` | Output file for the low-coverage bad bins. |
 | `--hic_format` | string | `pairs` | The input data format, either `hic` or `pairs`, other format not supported yet. |
 ---
 
