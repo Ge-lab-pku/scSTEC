@@ -29,8 +29,7 @@ parse_args <- function() {
     cat("Options:\n")
     cat("  --fasta <file>        Path to input reference genome FASTA file (required)\n")
     cat("  --output <file>       Output CpG density file path [default: hg38_100k_CpG.txt]\n")
-    cat("  --window_size <int>   Sliding window size in bp [default: 100000]\n")
-    cat("  --step_size <int>     Step size in bp [default: 100000]\n")
+    cat("  --resolution <int>   Sliding window size in bp [default: 100000]\n")
     cat("  --species <string>    Species assembly: 'human' (autosomes 1-22) or 'mouse' (1-19) [default: human]\n\n")
     q(status = 0)
   }
@@ -44,13 +43,11 @@ parse_args <- function() {
     } else if (arg == "--output") {
       opts$output <- args[i + 1]
       i <- i + 2
-    } else if (arg == "--window_size") {
+    } else if (arg == "--resolution") {
       opts$window_size <- as.integer(args[i + 1])
+      opts$step_size <- opts$window_size
       i <- i + 2
-    } else if (arg == "--step_size") {
-      opts$step_size <- as.integer(args[i + 1])
-      i <- i + 2
-    } else if (arg == "--species") {
+    }  else if (arg == "--species") {
       opts$species <- args[i + 1]
       i <- i + 2
     } else {

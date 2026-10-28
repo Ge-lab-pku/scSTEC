@@ -79,8 +79,7 @@ Generate genome-wide CpG densities from a reference FASTA file (e.g., `hg38.fa` 
 ```bash
 Rscript calc_cpg_density.R \
   --fasta ./reference/hg38.fa \
-  --window_size 500000 \
-  --step_size 500000 \
+  --resolution 500000 \
   --species human \
   --output ./reference/hg38_500k_CpG.txt
 ```
@@ -189,14 +188,13 @@ Rscript calc_cpg_density.R --fasta <genome.fa> [options]
 | :--- | :--- | :--- | :--- |
 | `--fasta` | string | *Required* | Path to the input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
 | `--output` | string | `hg38_100k_CpG.txt` | Output CpG density file |
-| `--window_size` | integer | `100000` | Sliding window size (resolution) |
-| `--step_size` | integer | `100000` | Sliding step size (typically also resolution) |
+| `--resolution` | integer | `500000` | The resolution of CpG density |
 | `--species` | string | `human` | Species: `'human'` or `'mouse'`. |
 
 ---
 
 ### Step 2. `filter_bad_bins.py`
-Scans single-cell `.hic` contact maps to identify  low-coverage genomic bins with insufficient read counts.
+Scans all single-cell `.hic` contact maps to identify  low-coverage genomic bins with insufficient read counts.
 
 **Usage:**
 ```bash
