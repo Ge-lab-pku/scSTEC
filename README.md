@@ -122,9 +122,9 @@ For human (here the input is in `.hic` format)
 ```bash
 python3 scstec_main.py \
   --sample_list ./data/human/sample_list.txt \
-  --hic_dir ./data/ \
+  --hic_dir ./data/human/ \
   --cpg_file ./reference/hg38_500k_CpG.txt \
-  --blacklist_file ./data/bad_bins_blacklist_500k.txt \
+  --blacklist_file ./data/human/bad_bins_blacklist_500k.txt \
   --chrom_sizes ./reference/hg38.chrom.sizes \
   --resolution 500000 \
   --num_chroms 22 \
