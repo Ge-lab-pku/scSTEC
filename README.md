@@ -168,16 +168,16 @@ The output consists of four compressed NumPy binary arrays (`.npy`):
    * Shape: `(N_cells, Total_Genomic_Loci, Num_of_Ref_Chrom)`
    * All subcompartment annotations from each reference chromosome
 4. **`filtered_cells_100k.npy`**:
-   * Indices of cells filtered out due to insufficient quality
+   * Indices of cells filtered out due to insufficient data quality
 
 ---
 
 ## 🔧 Script Arguments & Detailed Parameters
 
-This section provides comprehensive parameter explanations and usage instructions for all workflow and preprocessing scripts in scSTEC.
+This section provides comprehensive parameter explanations for all scripts in scSTEC.
 
 ### Step 1. `calc_cpg_density.R`
-Calculates genome-wide sliding-window CpG densities from a reference FASTA genome file.
+Calculates genome-wide CpG densities from a reference FASTA genome file.
 
 **Usage:**
 ```bash
@@ -185,7 +185,7 @@ Rscript calc_cpg_density.R --fasta <genome.fa> [options]
 ```
 
 **Parameters:**
-| Parameter | Type | Default | Description |
+| <div style="width: 120px;">Parameter</div>  | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--fasta` | string | *Required* | Path to the input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
 | `--output` | string | `hg38_100k_CpG.txt` | Output text file path for the calculated CpG density table. |
@@ -208,7 +208,7 @@ python3 filter_bad_bins.py \
 ```
 
 **Parameters:**
-| Parameter | Type | Default | Description |
+| <div style="width: 120px;">Parameter</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--chrom_sizes` | string | *Required* | Path to chromosome sizes file (two-column tab-delimited: chrom and length, e.g. `hg38.chrom.sizes`). |
 | `--sample_list` | string | *Required* | Path to text file containing sample IDs (one cell ID per line, matching `<cell_id>.hic`). |
@@ -235,7 +235,7 @@ python3 scstec_main.py \
 ```
 
 **Parameters:**
-| Parameter | Type | Default | Description |
+| <div style="width: 180px;">Parameter</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--sample_list` | string | *Required* | Path to sample list text file (one cell ID per line). |
 | `--hic_dir` | string | *Required* | Directory containing single-cell `.hic` contact files. |
@@ -264,7 +264,7 @@ python3 extract_pairs_contacts.py \
 ```
 
 **Parameters:**
-| Parameter | Type | Default | Description |
+| <div style="width: 120px;">Parameter</div> | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--chrom_sizes` | string | *Required* | Path to chromosome sizes file (e.g. `mm10.chrom.sizes` or `hg38.chrom.sizes`). |
 | `--sample_list` | string | *Required* | Path to sample list text file (one cell ID per line, matching `<cell_id>.pairs.gz` or `<cell_id>.pairs`). |
