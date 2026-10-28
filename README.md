@@ -188,15 +188,15 @@ Rscript calc_cpg_density.R --fasta <genome.fa> [options]
 | <div style="width: 180px;">Parameter&emsp;&emsp;&emsp;&emsp;</div>  | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--fasta` | string | *Required* | Path to the input reference genome FASTA file (e.g. `hg38.fa`, `mm10.fa`). |
-| `--output` | string | `hg38_100k_CpG.txt` | Output text file path for the calculated CpG density table. |
-| `--window_size` | integer | `100000` | Sliding window size in base pairs (bp). |
-| `--step_size` | integer | `100000` | Sliding step size in base pairs (bp). |
-| `--species` | string | `human` | Species assembly to process: `'human'` (autosomes chr1–22) or `'mouse'` (autosomes chr1–19). |
+| `--output` | string | `hg38_100k_CpG.txt` | Output CpG density file |
+| `--window_size` | integer | `100000` | Sliding window size (resolution) |
+| `--step_size` | integer | `100000` | Sliding step size (typically also resolution) |
+| `--species` | string | `human` | Species: `'human'` or `'mouse'`. |
 
 ---
 
 ### Step 2. `filter_bad_bins.py`
-Scans single-cell `.hic` contact maps to identify and blacklist low-coverage / unmappable genomic bins with insufficient cumulative read counts.
+Scans single-cell `.hic` contact maps to identify  low-coverage genomic bins with insufficient read counts.
 
 **Usage:**
 ```bash
