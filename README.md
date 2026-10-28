@@ -215,7 +215,7 @@ python3 filter_bad_bins.py \
 | `--min_reads` | integer | `10` | Minimum total read count across all cells; bins with fewer reads are filtered out. |
 | `--num_chroms` | integer | `22` | Number of autosomes to evaluate (`22` for human, `19` for mouse). |
 | `--output` | string | `bad_bins_blacklist_500k.txt` | Output file for the low-coverage bad bins. |
-| `--hic_format` | string | `pairs` | The input data format, either `.hic` or `.pairs`, other format not supported yet. |
+| `--hic_format` | string | `pairs` | The input data format, either `hic` (for `.hic` files) or `pairs` (for `.pairs` files), other format not supported yet. |
 ---
 
 ### Step 3. `scstec_main.py`
