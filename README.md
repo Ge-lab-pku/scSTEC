@@ -275,11 +275,6 @@ python3 extract_pairs_contacts.py \
 
 ## 📖 Citation
 
-If you use **scSTEC** in your research, please cite:
-
-> Yongli Peng\*, Liyuan Yang\*, and Hao Ge.  
-> **scSTEC: Annotating Chromatin Subcompartments from Individual Single-Cell Hi-C Data via Direct Two-Dimensional Embedding and Chromosome-wise Consensus.**  
-> *Bioinformatics*, 2026. DOI: [10.1093/bioinformatics/xxxxx](https://doi.org/10.1093/bioinformatics/xxxxx)
 
 ---
 
